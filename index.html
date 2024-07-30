@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Add a new Transaction:</h1>
+        </div>
+        <div class="input">
+            <div class="type">
+                <label for="Type">Type:</label>
+                <select name="categ" id="type">
+                    <option value="options">Choose one...</option>
+                    <option value="Income">Income</option>
+                    <option value="Home_Expense">Home_Expense</option>
+                    <option value="Fun_Expense">Fun_Expense</option>
+                    <option value="Other_Expense">Other_Expense</option>
+                    <option value="Saving">saving</option>
+                </select>
+            </div>
+            <div class="fill">
+                <label for="Name" class="name_l">Name:</label>
+                <input type="text" id="Name">
+                <br>
+                <label for="Amount" >Amount:</label>
+                <input type="number" id="Amount">
+            </div>
+        </div>
+        <div class="submit">
+            <button type="submit" id="btn" onclick="adding()">Add to transactions</button>
+        </div>
+        <div class="space"></div>
+        <div class="table">
+            <table>
+                <tr>
+                    <th class="head">Type</th>
+                    <th class="head">Name</th>
+                    <th class="head">Amount</th>
+                    <th class="head">Option</th>
+                </tr>
+            </table>
+    </div>
+
+    <script>
+        function adding(){
+            var name = document.getElementById('Name').value;
+            var amount = document.getElementById('Amount').value;
+            var type = document.getElementById('type').value;
+            if(name == "" || amount == "" || type == "options"){
+                alert("Please fill all the fields");
+            }
+            else{
+                var table = document.querySelector('table');
+                var newRow = table.insertRow(-1);
+                var typeCell = newRow.insertCell(0);
+                var nameCell = newRow.insertCell(1);
+                var amountCell = newRow.insertCell(2);
+                var optionCell = newRow.insertCell(3);
+
+                typeCell.innerHTML = type;
+                nameCell.innerHTML = name;
+                amountCell.innerHTML = amount;
+                optionCell.innerHTML = '<button>Delete</button>';
+            }
+        }
+    </script>
+
+</body>
+</html>
